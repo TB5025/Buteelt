@@ -14,6 +14,5 @@ public class Circle {
  System.out.print("Enter the circle's radius: ");
  Scanner in = new Scanner(System.in);
  Circle c = new Circle(in.nextFloat());
- // TODO: compute and print the circumference and area of the circle
  }
 }
