@@ -7,7 +7,6 @@ public class Main {
         ArrayList<Integer> myList = createList();
         System.out.println("Created list: " + myList);
 
- 
         int sum = calculateSum(myList);
         System.out.println("Элементүүдийн нийлбэр: " + sum);
 
