@@ -3,27 +3,27 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. ArrayList_үүсгэх
+
         ArrayList<Integer> myList = createList();
         System.out.println("Created list: " + myList);
 
-        // 2. Элементүүдийн_нийлбэр 
+ 
         int sum = calculateSum(myList);
         System.out.println("Элементүүдийн нийлбэр: " + sum);
 
-        // 3. Элементүүдийг_эрэмбэлэх
+
         ArrayList<Integer> reversedList = sortDescList(myList);
         System.out.println("Элементүүдийг эрэмбэлэх: " + reversedList);
 
-        // 4. Макс_утга
+
         int maxElement = findMaxElement(myList);
         System.out.println("Макс утга: " + maxElement);
 
-        // 5. Элементүүдийн_квадрат
+
         ArrayList<Integer> squaredList = squareElements(myList);
         System.out.println("Элементүүдийг квадрат: " + squaredList);
 
-        // 6. Сондгой_тоо
+
         ArrayList<Integer> evenNumbers = filterEvenNumbers(myList);
         System.out.println("Сондгой тоо: " + evenNumbers);
     }
