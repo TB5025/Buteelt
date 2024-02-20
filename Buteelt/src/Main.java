@@ -1,74 +1,89 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        ArrayList<Integer> myList = createList();
+        ArrayList<Number> myList = createList();
         System.out.println("Created list: " + myList);
 
-        int sum = calculateSum(myList);
+        Number sum = calculateSum(myList);
         System.out.println("Элементүүдийн нийлбэр: " + sum);
 
-        ArrayList<Integer> reversedList = sortDescList(myList);
+        ArrayList<Number> reversedList = sortDescList(myList);
         System.out.println("Элементүүдийг эрэмбэлэх: " + reversedList);
 
-        int maxElement = findMaxElement(myList);
+        Number maxElement = findMaxElement(myList);
         System.out.println("Макс утга: " + maxElement);
 
-        ArrayList<Integer> squaredList = squareElements(myList);
+        ArrayList<Number> squaredList = squareElements(myList);
         System.out.println("Элементүүдийг квадрат: " + squaredList);
 
-        ArrayList<Integer> evenNumbers = filterEvenNumbers(myList);
+        ArrayList<Number> evenNumbers = filterEvenNumbers(myList);
         System.out.println("Сондгой тоо: " + evenNumbers);
     }
 
-    public static ArrayList<Integer> createList() {
-        ArrayList<Integer> list = new ArrayList();
-        list.add(3);
-        list.add(6);
-        list.add(7);
-        list.add(8);
-        list.add(9);
+    public static ArrayList<Number> createList() {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Number> list = new ArrayList<Number>();
+        System.out.println("Элементүүдийг зайтай оруулна уу (Элементүүдийг оруулж дуусаад 'done' гэж бичнэ үү): ");
+        while (scan.hasNext()) {
+            String input = scan.next();
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
+            try {
+                int num = Integer.parseInt(input);
+                list.add(num);
+            } catch (NumberFormatException e) {
+                try {
+                    double num = Double.parseDouble(input);
+                    list.add(num);
+                } catch (NumberFormatException e2) {
+                    System.out.println("Буруу утга. Тоо эсвэл 'done' гэж бичнэ үү.");
+                }
+            }
+        }
+        scan.close();
         return list;
     }
 
-    public static int calculateSum(ArrayList<Integer> list) {
-        int sum = 0;
-        for (int num : list) {
-            sum += num;
+    public static Number calculateSum(ArrayList<Number> list) {
+        double sum = 0;
+        for (Number num : list) {
+            sum += num.doubleValue();
         }
         return sum;
     }
 
-    public static ArrayList<Integer> sortDescList(ArrayList<Integer> list) {
-        ArrayList<Integer> sortedDesc = new ArrayList(list);
+    public static ArrayList<Number> sortDescList(ArrayList<Number> list) {
+        ArrayList<Number> sortedDesc = new ArrayList<Number>(list);
         Collections.sort(sortedDesc, Collections.reverseOrder());
         return sortedDesc;
     }
 
-    public static int findMaxElement(ArrayList<Integer> list) {
-        int max = Integer.MIN_VALUE;
-        for (int num : list) {
-            if (num > max) {
-                max = num;
+    public static Number findMaxElement(ArrayList<Number> list) {
+        double max = Double.MIN_VALUE;
+        for (Number num : list) {
+            if (num.doubleValue() > max) {
+                max = num.doubleValue();
             }
         }
         return max;
     }
 
-    public static ArrayList<Integer> squareElements(ArrayList<Integer> list) {
-        ArrayList<Integer> squared = new ArrayList();
-        for (int num : list) {
-            squared.add(num * num);
+    public static ArrayList<Number> squareElements(ArrayList<Number> list) {
+        ArrayList<Number> squared = new ArrayList<Number>();
+        for (Number num : list) {
+            squared.add(num.doubleValue() * num.doubleValue());
         }
         return squared;
     }
 
-    public static ArrayList<Integer> filterEvenNumbers(ArrayList<Integer> list) {
-        ArrayList<Integer> evenNumbers = new ArrayList();
-        for (int num : list) {
-            if (num % 2 == 1) {
+    public static ArrayList<Number> filterEvenNumbers(ArrayList<Number> list) {
+        ArrayList<Number> evenNumbers = new ArrayList<Number>();
+        for (Number num : list) {
+            if (num.doubleValue() % 2 == 1) {
                 evenNumbers.add(num);
             }
         }
